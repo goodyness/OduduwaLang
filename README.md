@@ -138,4 +138,4 @@ For the full technical details on how to write OduduwaLang, view our guides:
 
 ## 🤝 Contributing
 This is an open-source project. We welcome Yoruba linguists and software engineers to join us in building this legacy. 
-Feel free to open an issue or submit a Pull Request on our [GitHub Repository](https://github.com/AdediranAdedamola/OduduwaLang).
+Feel free to open an issue or submit a Pull Request on our [GitHub Repository](https://github.com/goodyness/OduduwaLang).
