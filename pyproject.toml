@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "oduduwalang"
-version = "0.1.0"
+version = "0.2.1"
 authors = [
   { name="Oduduwa Developer", email="adediranadedamolagoodness@gmail.com" },
 ]
@@ -20,3 +20,9 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/goodyness/OduduwaLang"
 "Bug Tracker" = "https://github.com/goodyness/OduduwaLang/issues"
+
+[project.scripts]
+oduduwa = "oduduwa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

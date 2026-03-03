@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: oduduwalang
-Version: 0.1.0
+Version: 0.2.1
 Summary: A Yoruba-first programming language
 Home-page: https://github.com/goodyness/OduduwaLang
 Author: Adediran Adedamola Goodness
@@ -156,4 +156,4 @@ For the full technical details on how to write OduduwaLang, view our guides:
 
 ## 🤝 Contributing
 This is an open-source project. We welcome Yoruba linguists and software engineers to join us in building this legacy. 
-Feel free to open an issue or submit a Pull Request on our [GitHub Repository](https://github.com/AdediranAdedamola/OduduwaLang).
+Feel free to open an issue or submit a Pull Request on our [GitHub Repository](https://github.com/goodyness/OduduwaLang).
