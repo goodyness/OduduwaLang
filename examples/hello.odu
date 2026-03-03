@@ -1,0 +1,11 @@
+# Idanwo OduduwaLang (Test)
+# Calculating Factorial
+
+ise se_ifosi(n):
+    ti n == 1:
+        pada 1
+    bibeeko:
+        pada n * se_ifosi(n - 1)
+
+abajade = se_ifosi(6)
+tejade("Abajade se_ifosi(6) je:", abajade)

@@ -1,0 +1,8 @@
+# Idanwo Asise (Error Test)
+
+ise se_asise():
+    # Intentionally misspelling a keyword, or forgetting a colon
+    ti 1 == 1
+        tejade("Mo gbagbe colon!")
+
+se_asise()

@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: oduduwalang
+Version: 0.1.0
+Summary: A Yoruba-first programming language
+Author: OduduwaLang Community
+Requires-Python: >=3.8
+Dynamic: author
+Dynamic: requires-python
+Dynamic: summary

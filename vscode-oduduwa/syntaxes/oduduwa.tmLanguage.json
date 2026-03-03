@@ -1,0 +1,56 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "OduduwaLang",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#numbers"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.oduduwa",
+                    "match": "\\b(ise|pada|ti|si_ti|bibeeko|fun|nigbati|lati|de)\\b"
+                },
+                {
+                    "name": "support.function.oduduwa",
+                    "match": "\\b(tejade)\\b"
+                },
+                {
+                    "name": "constant.language.oduduwa",
+                    "match": "\\b(sotito|seke|ofo)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.oduduwa",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.oduduwa",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "comments": {
+            "name": "comment.line.number-sign.oduduwa",
+            "match": "#.*$"
+        },
+        "numbers": {
+            "name": "constant.numeric.oduduwa",
+            "match": "\\b\\d+(\\.\\d+)?\\b"
+        }
+    },
+    "scopeName": "source.oduduwa"
+}

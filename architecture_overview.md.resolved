@@ -1,0 +1,25 @@
+# Bí OduduwaLang Ṣe Ṣiṣẹ (How OduduwaLang Works)
+
+To build a professional programming language, we follow a standard compiler pipeline. OduduwaLang currently uses a **Transpilation Strategy**, specifically building on top of Python.
+
+## The Compilation Pipeline
+
+### 1. Ayẹwo Ọ̀rọ̀ (Lexical Analysis / Lexing)
+The **Lexer** takes the raw text (source code) and breaks it into "Tokens". 
+- **What happens**: It sees `ise` and recognizes it as a `KEYWORD_DEF`. It sees `5` and recognizes it as a `NUMBER`.
+- **Oduduwa Speciality**: Our lexer is "diacritic-aware". Whether you write `ṣòtító` or `sotito`, the lexer normalizes it to the same internal token. This makes the language accessible while respecting the beauty of Yoruba orthography.
+
+### 2. Ayẹwo Gírámà (Parsing / Syntax Analysis)
+The **Parser** takes the stream of tokens and organizes them into an **AST (Abstract Syntax Tree)**.
+- **What happens**: It checks if your code follows the rules (grammar). For example, `ise` must be followed by a name and then a colon `:`. 
+- **Structure**: The AST is a tree-like representation of your logic, removing unnecessary things like whitespace or parentheses and focusing on the meaning.
+
+### 3. Ìyípadà (Transpilation)
+The **Transpiler** "visits" each node in the AST and generates the equivalent Python code.
+- **Why Python?**: Python is a powerful, production-ready language. By transpiling to Python, OduduwaLang immediately gains access to thousands of libraries (AI, Web, Data Science) while keeping its unique Yoruba identity.
+
+### 4. Ìṣiṣẹ́ (Execution)
+The generated Python code is then run using the standard Python interpreter.
+
+## Summary for Explaining to Others
+> "OduduwaLang acts like a 'Yoruba layer' over Python. It translates Yoruba logic into a format computers understand using a professional pipeline: It reads the words (Lexer), understands the grammar (Parser), and translates it to Python (Transpiler) to run. It's not just a translator; it's a real language tool."

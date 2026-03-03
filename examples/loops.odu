@@ -1,0 +1,12 @@
+# Idanwo Yipo (Loop Test)
+# Test for 'fun' and 'nigbati'
+
+tejade("--- For Loop (fun) ---")
+fun i lati 1 de 5:
+    tejade("Nọmba:", i)
+
+tejade("--- While Loop (nigbati) ---")
+j = 1
+nigbati j <= 3:
+    tejade("Nigbati:", j)
+    j = j + 1

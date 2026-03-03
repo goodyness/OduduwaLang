@@ -1,0 +1,11 @@
+# Idanwo Eto Eda (Data Structure Test)
+
+oluko = {
+    "oruko": "Adejoke",
+    "ipo": "Olori Edu"
+}
+
+akeko = ["Bolu", "Seyi", "Dayo"]
+
+tejade("Oruko Oluko:", oluko)
+tejade("Awon Akeko:", akeko)

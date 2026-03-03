@@ -1,0 +1,39 @@
+{
+    "name": "oduduwa",
+    "displayName": "OduduwaLang",
+    "description": "Yoruba-first programming language support",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "icon": "icon.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "oduduwa",
+                "aliases": [
+                    "Oduduwa",
+                    "oduduwa"
+                ],
+                "extensions": [
+                    ".odu"
+                ],
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icon.png",
+                    "dark": "./icon.png"
+                }
+            }
+        ],
+        "grammars": [
+            {
+                "language": "oduduwa",
+                "scopeName": "source.oduduwa",
+                "path": "./syntaxes/oduduwa.tmLanguage.json"
+            }
+        ]
+    }
+}

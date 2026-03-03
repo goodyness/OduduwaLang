@@ -1,0 +1,7 @@
+# Idanwo Iro (Math Test)
+
+n = 16
+tejade("Gbongbo", n, "je", iro.gbongbo(n))
+tejade("Agbara 2 si 3 je", iro.agbara(2, 3))
+
+tejade("Poju ninu [10, 50, 30] ni:", iro.poju(10, 50, 30))
