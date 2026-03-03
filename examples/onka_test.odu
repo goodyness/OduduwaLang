@@ -1,0 +1,7 @@
+# Idanwo Onka (Number Converter Test)
+mu_wole onka
+
+tejade("100 l'ede Yoruba ni:", onka.yipada(100))
+tejade("15 l'ede Yoruba ni:", onka.yipada(15))
+tejade("1050 l'ede Yoruba ni:", onka.yipada(1050))
+tejade("2024 l'ede Yoruba ni:", onka.yipada(2024))

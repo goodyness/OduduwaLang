@@ -1,0 +1,5 @@
+tejade("OOTO meaning True: ", ooto)
+tejade("IRO meaning False: ", iro)
+
+ti ooto:
+    tejade("It works as True!")

@@ -22,6 +22,8 @@ def print_help():
     print("  fun       : for (loops)")
     print("  nigbati   : while (loops)")
     print("  tejade    : print")
+    print("  sotito/ooto : True")
+    print("  seke/iro  : False")
     print("\nApeere (Examples):")
     print("  odu> tejade(\"Bawo ni?\")")
     print("  odu> oruko = \"Ade\"")

@@ -65,6 +65,18 @@ def main():
     repl_parser = subparsers.add_parser("soro", help="Start the Interactive REPL")
     repl_parser_en = subparsers.add_parser("repl", help="Start the Interactive REPL")
 
+    # "format" command
+    fmt_parser = subparsers.add_parser("se_eto", help="Format an OduduwaLang file (alias: format)")
+    fmt_parser.add_argument("file", help="Path to the .odu file")
+    fmt_parser_en = subparsers.add_parser("format", help="Format an OduduwaLang file")
+    fmt_parser_en.add_argument("file", help="Path to the .odu file")
+
+    # "lint" command
+    lint_parser = subparsers.add_parser("yewo", help="Lint an OduduwaLang file (alias: lint)")
+    lint_parser.add_argument("file", help="Path to the .odu file")
+    lint_parser_en = subparsers.add_parser("lint", help="Lint an OduduwaLang file")
+    lint_parser_en.add_argument("file", help="Path to the .odu file")
+
     # If no arguments are provided, default to REPL
     if len(sys.argv) == 1:
         from oduduwa.repl import start_repl
@@ -78,6 +90,12 @@ def main():
     elif args.command in ["soro", "repl"]:
         from oduduwa.repl import start_repl
         start_repl()
+    elif args.command in ["se_eto", "format"]:
+        from oduduwa.core.formatter import format_file
+        format_file(args.file)
+    elif args.command in ["yewo", "lint"]:
+        from oduduwa.core.linter import lint_file
+        lint_file(args.file)
     else:
         parser.print_help()
 

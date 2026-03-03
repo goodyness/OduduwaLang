@@ -1,0 +1,11 @@
+# Idanwo Standard Library (StdLib Test)
+
+mu_wole akoko
+mu_wole json_yoruba
+
+tejade("Asiko yii ni (Current time is): ", akoko.asiko_kika())
+
+akowe = {"oruko": "Ade", "odun": 25}
+oro_json = json_yoruba.yipada_si_oro(akowe)
+
+tejade("Eyi ni asiri JSON (This is JSON output):", oro_json)

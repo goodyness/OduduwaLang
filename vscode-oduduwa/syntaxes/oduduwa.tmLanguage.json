@@ -20,15 +20,19 @@
             "patterns": [
                 {
                     "name": "keyword.control.oduduwa",
-                    "match": "\\b(ise|pada|ti|si_ti|bibeeko|fun|nigbati|lati|de)\\b"
+                    "match": "\\b(egbe|ise|pada|ti|si_ti|bibeeko|fun|nigbati|lati|de|gbiyanju|mu_asise|ni_ipari)\\b"
                 },
                 {
                     "name": "support.function.oduduwa",
                     "match": "\\b(tejade)\\b"
                 },
                 {
+                    "name": "variable.language.special.self.oduduwa",
+                    "match": "\\b(ara)\\b"
+                },
+                {
                     "name": "constant.language.oduduwa",
-                    "match": "\\b(sotito|seke|ofo)\\b"
+                    "match": "\\b(sotito|seke|ofo|ooto|iro)\\b"
                 }
             ]
         },

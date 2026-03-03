@@ -1,7 +1,7 @@
 README.md
+pyproject.toml
 setup.py
 src/oduduwalang.egg-info/PKG-INFO
 src/oduduwalang.egg-info/SOURCES.txt
 src/oduduwalang.egg-info/dependency_links.txt
-src/oduduwalang.egg-info/entry_points.txt
 src/oduduwalang.egg-info/top_level.txt

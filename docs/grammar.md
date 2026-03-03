@@ -61,9 +61,28 @@ oluko = {
 ```
 
 ## Standard Library (Àkójọ́pọ̀ Kíni)
-OduduwaLang provides localized stdlib implementations.
-Example Math (`iro`):
+OduduwaLang provides localized stdlib implementations that map tightly to Python's capabilities.
 ```oduduwa
-abajade = iro.gbongbo(16)
-tejade("Gbongbo 16 je: ", abajade)
+mu_wole iro
+mu_wole akoko
+mu_wole onka
+
+tejade(onka.yipada(100)) # "ọgọ́rùn-ún kan le"
+```
+
+## Object-Oriented Programming
+```oduduwa
+egbe Eniyan:
+    ise __ibere__(ara, oruko):
+        ara.oruko = oruko
+```
+
+## Error Handling
+```oduduwa
+gbiyanju:
+    # eléwù (risky code)
+mu_asise:
+    # a mu asise na (error caught)
+ni_ipari:
+    # ohun to gbodo sele (always executes)
 ```

@@ -5,6 +5,11 @@ class Module(ASTNode):
     def __init__(self, body):
         self.body = body # List of statements
 
+class ClassDef(ASTNode):
+    def __init__(self, name, body):
+        self.name = name
+        self.body = body # List of statements
+
 class FunctionDef(ASTNode):
     def __init__(self, name, args, body):
         self.name = name
@@ -25,6 +30,27 @@ class While(ASTNode):
     def __init__(self, condition, body):
         self.condition = condition
         self.body = body # List of statements
+
+class TryCatch(ASTNode):
+    def __init__(self, body, handlers, orelse, finalbody):
+        self.body = body           # List of statements
+        self.handlers = handlers   # List of ExceptHandler nodes (we can simplify to just body for now)
+        self.orelse = orelse       # List of statements (else)
+        self.finalbody = finalbody # List of statements (finally)
+
+class ExceptHandler(ASTNode):
+    def __init__(self, name, body):
+        self.name = name           # String (alias) or None
+        self.body = body           # List of statements
+
+class Import(ASTNode):
+    def __init__(self, names):
+        self.names = names # List of Name nodes
+
+class ImportFrom(ASTNode):
+    def __init__(self, module, names):
+        self.module = module # Name node
+        self.names = names   # List of Name nodes
 
 class ForRange(ASTNode):
     def __init__(self, target, start, end, body):

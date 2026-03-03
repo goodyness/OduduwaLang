@@ -1,0 +1,11 @@
+# Idanwo Asise (Error Test)
+
+tejade("A fe pin 10 pelu 0 (We want to divide 10 by 0)")
+
+gbiyanju:
+    abajade = 10 / 0
+    tejade("Abajade:", abajade)
+mu_asise:
+    tejade("A ti mu asise! O ko le pin pelu odo. (Error caught! Cannot divide by zero.)")
+ni_ipari:
+    tejade("Eyi ma sise ni gbogbo igba (This always runs at the end)")

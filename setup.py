@@ -5,15 +5,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="oduduwalang", 
-    version="0.1.0",
-    author="Oduduwa Developer",
-    author_email="hello@oduduwalang.org",
+    version="0.2.0",
+    author="Adediran Adedamola Goodness",
+    author_email="adediranadedamolagoodness@gmail.com",
     description="A Yoruba-first programming language",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your-username/OduduwaLang",
+    url="https://github.com/goodyness/OduduwaLang",
     project_urls={
-        "Bug Tracker": "https://github.com/your-username/OduduwaLang/issues",
+        "Bug Tracker": "https://github.com/goodyness/OduduwaLang/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

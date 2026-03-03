@@ -45,6 +45,14 @@ class OduduwaParser:
         tok = self.current()
         if tok.type == TokenType.ISE:
             return self.function_def()
+        elif tok.type == TokenType.EGBE:
+            return self.class_def()
+        elif tok.type == TokenType.GBIYANJU:
+            return self.try_statement()
+        elif tok.type == TokenType.MU_WOLE:
+            return self.import_statement()
+        elif tok.type == TokenType.LATI:
+            return self.import_from_statement()
         elif tok.type == TokenType.TI:
             return self.if_statement()
         elif tok.type == TokenType.NIGBATI:
@@ -56,14 +64,13 @@ class OduduwaParser:
             val = self.expression() if self.current().type != TokenType.NEWLINE else NoneType()
             self.expect(TokenType.NEWLINE)
             return Return(val)
-        elif tok.type == TokenType.IDENTIFIER:
-            # Lookahead for assignment
-            next_tok = self.tokens[self.pos + 1] if self.pos + 1 < len(self.tokens) else None
-            if next_tok and next_tok.type == TokenType.ASSIGN:
-                return self.assignment()
-        
-        # Expression statement
+        # Expression or Assignment statement
         expr = self.expression()
+        if self.match(TokenType.ASSIGN):
+            value = self.expression()
+            self.expect(TokenType.NEWLINE)
+            return Assign(expr, value)
+            
         self.expect(TokenType.NEWLINE, "after expression")
         return expr
 
@@ -82,6 +89,45 @@ class OduduwaParser:
         body = self.block()
         return FunctionDef(name, args, body)
 
+    def class_def(self):
+        self.expect(TokenType.EGBE)
+        name = self.expect(TokenType.IDENTIFIER).value
+        self.expect(TokenType.COLON)
+        self.expect(TokenType.NEWLINE)
+        body = self.block()
+        return ClassDef(name, body)
+
+    def try_statement(self):
+        self.expect(TokenType.GBIYANJU)
+        self.expect(TokenType.COLON)
+        self.expect(TokenType.NEWLINE)
+        body = self.block()
+        
+        handlers = []
+        orelse = []
+        finalbody = []
+        
+        while self.current().type == TokenType.NEWLINE:
+            self.advance()
+            
+        while self.current().type == TokenType.MU_ASISE:
+            self.expect(TokenType.MU_ASISE)
+            self.expect(TokenType.COLON)
+            self.expect(TokenType.NEWLINE)
+            h_body = self.block()
+            handlers.append(ExceptHandler(None, h_body))
+            
+            while self.current().type == TokenType.NEWLINE:
+                self.advance()
+                
+        if self.current().type == TokenType.NI_IPARI:
+            self.expect(TokenType.NI_IPARI)
+            self.expect(TokenType.COLON)
+            self.expect(TokenType.NEWLINE)
+            finalbody = self.block()
+            
+        return TryCatch(body, handlers, orelse, finalbody)
+
     def while_statement(self):
         self.expect(TokenType.NIGBATI)
         condition = self.expression()
@@ -89,6 +135,28 @@ class OduduwaParser:
         self.expect(TokenType.NEWLINE)
         body = self.block()
         return While(condition, body)
+
+    def import_statement(self):
+        self.expect(TokenType.MU_WOLE)
+        names = []
+        names.append(Name(self.expect(TokenType.IDENTIFIER).value))
+        while self.current().type == TokenType.COMMA:
+            self.advance()
+            names.append(Name(self.expect(TokenType.IDENTIFIER).value))
+        self.expect(TokenType.NEWLINE)
+        return Import(names)
+
+    def import_from_statement(self):
+        self.expect(TokenType.LATI)
+        module = Name(self.expect(TokenType.IDENTIFIER).value)
+        self.expect(TokenType.MU_WOLE)
+        names = []
+        names.append(Name(self.expect(TokenType.IDENTIFIER).value))
+        while self.current().type == TokenType.COMMA:
+            self.advance()
+            names.append(Name(self.expect(TokenType.IDENTIFIER).value))
+        self.expect(TokenType.NEWLINE)
+        return ImportFrom(module, names)
 
     def for_statement(self):
         # fún i láti 1 dé 5:

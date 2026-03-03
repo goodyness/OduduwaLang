@@ -4,6 +4,7 @@ from enum import Enum, auto
 
 class TokenType(Enum):
     # Keywords
+    EGBE = auto()       # class
     ISE = auto()        # def
     PADA = auto()       # return
     TI = auto()         # if
@@ -11,12 +12,16 @@ class TokenType(Enum):
     SI_TI = auto()      # elif
     FUN = auto()        # for
     NIGBATI = auto()    # while
+    GBIYANJU = auto()   # try
+    MU_ASISE = auto()   # except
+    NI_IPARI = auto()   # finally
     TEJADE = auto()     # print
     SOTITO = auto()     # True
     SEKE = auto()       # False
     OFO = auto()        # None
     LATI = auto()       # from (in ranges)
     DE = auto()         # to (in ranges)
+    MU_WOLE = auto()    # import
     
     # Literals & Identifiers
     IDENTIFIER = auto()
@@ -62,6 +67,7 @@ class Token:
         return f"Token({self.type.name}, {repr(self.value)}, line={self.line}, col={self.column})"
 
 KEYWORDS = {
+    "egbe": TokenType.EGBE,
     "ise": TokenType.ISE,
     "pada": TokenType.PADA,
     "ti": TokenType.TI,
@@ -69,12 +75,18 @@ KEYWORDS = {
     "si_ti": TokenType.SI_TI,
     "fun": TokenType.FUN,
     "nigbati": TokenType.NIGBATI,
+    "gbiyanju": TokenType.GBIYANJU,
+    "mu_asise": TokenType.MU_ASISE,
+    "ni_ipari": TokenType.NI_IPARI,
     "tejade": TokenType.TEJADE,
     "sotito": TokenType.SOTITO,
+    "ooto": TokenType.SOTITO,
     "seke": TokenType.SEKE,
+    "iro": TokenType.SEKE,
     "ofo": TokenType.OFO,
     "lati": TokenType.LATI,
     "de": TokenType.DE,
+    "mu_wole": TokenType.MU_WOLE,
 }
 
 # Regex for token specs

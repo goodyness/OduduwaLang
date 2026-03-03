@@ -4,6 +4,7 @@ class OduduwaTranspiler:
     def __init__(self):
         self.indent_level = 0
         self.output = []
+        self.STDLIB = ["iro", "akoko", "iwe", "ayelujara", "json_yoruba", "onka"]
 
     def emit(self, text):
         self.output.append("    " * self.indent_level + text)
@@ -17,8 +18,9 @@ class OduduwaTranspiler:
             for stmt in node.body:
                 self.visit_stmt(stmt)
         elif isinstance(node, FunctionDef):
+            func_name = "__init__" if node.name == "__ibere__" else node.name
             args = ", ".join([a.id for a in node.args])
-            self.emit(f"def {node.name}({args}):")
+            self.emit(f"def {func_name}({args}):")
             self.indent_level += 1
             if not node.body:
                 self.emit("pass")
@@ -26,6 +28,61 @@ class OduduwaTranspiler:
                 for stmt in node.body:
                     self.visit_stmt(stmt)
             self.indent_level -= 1
+        elif isinstance(node, ClassDef):
+            self.emit(f"class {node.name}:")
+            self.indent_level += 1
+            if not node.body:
+                self.emit("pass")
+            else:
+                for stmt in node.body:
+                    self.visit_stmt(stmt)
+            self.indent_level -= 1
+        elif isinstance(node, TryCatch):
+            self.emit("try:")
+            self.indent_level += 1
+            if not node.body:
+                self.emit("pass")
+            else:
+                for stmt in node.body:
+                    self.visit_stmt(stmt)
+            self.indent_level -= 1
+            
+            for handler in node.handlers:
+                self.emit("except Exception as e:")
+                self.indent_level += 1
+                if not handler.body:
+                    self.emit("pass")
+                else:
+                    for stmt in handler.body:
+                        self.visit_stmt(stmt)
+                self.indent_level -= 1
+                
+            if node.finalbody:
+                self.emit("finally:")
+                self.indent_level += 1
+                if not node.finalbody:
+                    self.emit("pass")
+                else:
+                    for stmt in node.finalbody:
+                        self.visit_stmt(stmt)
+                self.indent_level -= 1
+        elif isinstance(node, Import):
+            imports = []
+            for n in node.names:
+                if n.id in self.STDLIB:
+                    imports.append(f"import oduduwa.stdlib.{n.id} as {n.id}")
+                else:
+                    imports.append(f"import {n.id}")
+            # Ensure proper indentation for all lines
+            for imp in imports:
+                self.emit(imp)
+        elif isinstance(node, ImportFrom):
+            mod = node.module.id
+            names = ", ".join([n.id for n in node.names])
+            if mod in self.STDLIB:
+                self.emit(f"from oduduwa.stdlib.{mod} import {names}")
+            else:
+                self.emit(f"from {mod} import {names}")
         elif isinstance(node, Return):
             if isinstance(node.value, NoneType):
                 self.emit("return")

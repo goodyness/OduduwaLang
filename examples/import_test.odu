@@ -1,0 +1,6 @@
+# Idanwo Mu_wole (Import Test)
+
+mu_wole math
+lati math mu_wole sqrt
+
+tejade("Gbongbo merin (Square root) ti 16 je: ", sqrt(16))

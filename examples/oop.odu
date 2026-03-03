@@ -1,0 +1,14 @@
+# Idanwo Ẹgbẹ (Class / OOP Test)
+
+egbe Aja:
+    # __ibere__ ni constructor wa (is our constructor)
+    ise __ibere__(ara, oruko, awo):
+        ara.oruko = oruko
+        ara.awo = awo
+        
+    ise gbo(ara):
+        tejade(ara.oruko, "wipe: Gbo gbo! Mo ni awo", ara.awo)
+
+# Da aja titun (Create new dog)
+aja_mi = Aja("Okin", "Dudu")
+aja_mi.gbo()
