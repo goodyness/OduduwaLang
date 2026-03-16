@@ -66,7 +66,7 @@ python -m oduduwa.cli
 You will see the interactive prompt where you can type code line-by-line:
 ```
 =======================================
- OduduwaLang REPL v0.2.0
+ OduduwaLang REPL v0.2.2
  Tẹ 'iranlowo' (tabi 'help') fun itọsọna.
  Tẹ 'jade()' lati kuro (Type 'jade()' to exit)
 =======================================

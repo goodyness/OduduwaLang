@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="oduduwalang", 
-    version="0.2.1",
+    version="0.2.2",
     author="Adediran Adedamola Goodness",
     author_email="adediranadedamolagoodness@gmail.com",
     description="A Yoruba-first programming language",

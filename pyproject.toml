@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "oduduwalang"
-version = "0.2.1"
+version = "0.2.2"
 authors = [
   { name="Oduduwa Developer", email="adediranadedamolagoodness@gmail.com" },
 ]

@@ -1,6 +1,6 @@
 # OduduwaLang Release Notes
 
-## 🚀 Version 0.2.0 (The Isiro & Automation Update)
+## 🚀 Version 0.2.2 (The Isiro & Automation Update)
 **Release Date:** March 2026 (Mid-month Update)
 
 This update expands the language's core capabilities, adding essential math functions, easier string formatting, and a new build system for standalone scripts.

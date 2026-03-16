@@ -16,6 +16,7 @@ src/oduduwa/errors/reporter.py
 src/oduduwa/stdlib/akoko.py
 src/oduduwa/stdlib/ayelujara.py
 src/oduduwa/stdlib/iro.py
+src/oduduwa/stdlib/isiro.py
 src/oduduwa/stdlib/iwe.py
 src/oduduwa/stdlib/json_yoruba.py
 src/oduduwa/stdlib/onka.py
