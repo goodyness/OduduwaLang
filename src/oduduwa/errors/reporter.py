@@ -12,6 +12,10 @@ EXCEPTION_MAP = {
     "KeyError": "Aṣiṣe Kókó (Key Not Found)",
     "ValueError": "Aṣiṣe Iye (Value Error)",
     "ParserError": "Aṣiṣe Ìtumọ̀ Gírámà (Parser Error)",
+    "AttributeError": "Aṣiṣe Àfihàn (Attribute Error)",
+    "ImportError": "Aṣiṣe Ìgbéwọlé (Import Error)",
+    "ModuleNotFoundError": "A kò rí Ẹka (Module Not Found)",
+    "FileNotFoundError": "A kò rí Fáìlì (File Not Found)",
     "Exception": "Aṣiṣe Gbogbogbò (General Error)"
 }
 

@@ -1,0 +1,18 @@
+tejade("--- Itan Ikojo (Loops & Lists) ---")
+
+eso_akojo = ["Orede", "Ogede", "Mangoro", "Anamo"]
+
+tejade("Awon eso wa ninu akojo:")
+# Fun loop demo
+fun i lati 0 de 3:
+    # Manual indexing isn't implemented yet in parser (node['key'])
+    # So we'll just print indices for now or wait for more features
+    tejade(f"Eso kiko {i}")
+
+tejade("--- Nigbati (While) ---")
+kaun = 5
+nigbati kaun > 0:
+    tejade(f"Ika kika: {kaun}")
+    kaun = kaun - 1
+
+tejade("Iṣẹ́ parí!")

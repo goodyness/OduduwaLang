@@ -1,5 +1,4 @@
 n = 1
-
 nigbati sotito:
     tejade("Nọmba:", n)
     n = n + 1

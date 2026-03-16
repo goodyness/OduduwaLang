@@ -1,0 +1,19 @@
+mu_wole isiro # Import the isiro module
+
+# Ẹ̀kọ́ isiro (Math lesson)
+nomba1 = 10
+nomba2 = 20
+nomba3 = 30
+
+apapo = isiro.apapo([nomba1, nomba2, nomba3]) # Calculate the sum of the numbers
+iwon = isiro.iwon([nomba1, nomba2, nomba3]) # Calculate the average of the numbers
+
+tejade(f"Nọ́mbà wa ni: {nomba1}, {nomba2}, {nomba3}") # Print the numbers
+tejade(f"Àpapọ̀ wọn jẹ́: {apapo}") # Print the sum
+tejade(f"Ìwọ̀n wọn jẹ́: {iwon}") # Print the average
+
+# Agbara (Power)
+tejade(f"2 ni agbára 3 jẹ: {isiro.agbara(2, 3)}") # Print the power of 2 to the power of 3
+
+# Square root
+tejade(f"Gbere square 16 jẹ: {isiro.gbere_square(16)}") # Print the square root of 16

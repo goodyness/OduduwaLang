@@ -27,6 +27,7 @@ class TokenType(Enum):
     IDENTIFIER = auto()
     NUMBER = auto()
     STRING = auto()
+    FSTRING = auto()
     
     # Operators & Delimiters
     ASSIGN = auto()     # =
@@ -86,12 +87,14 @@ KEYWORDS = {
     "ofo": TokenType.OFO,
     "lati": TokenType.LATI,
     "de": TokenType.DE,
+    "tabi": TokenType.SI_TI,
     "mu_wole": TokenType.MU_WOLE,
 }
 
 # Regex for token specs
 TOKEN_SPECIFICATION = [
     ('NUMBER',     r'\d+(\.\d*)?'),             # Integer or decimal number
+    ('FSTRING',    r'f(".*?"|\'.*?\')'),        # F-String
     ('STRING',     r'(".*?"|\'.*?\')'),         # String
     ('ID',         r'[^\W\d]\w*'),              # Identifiers (letters + unicode)
     ('EQUALS',     r'=='),

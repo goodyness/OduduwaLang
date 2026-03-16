@@ -77,6 +77,19 @@ def main():
     lint_parser_en = subparsers.add_parser("lint", help="Lint an OduduwaLang file")
     lint_parser_en.add_argument("file", help="Path to the .odu file")
 
+    # "build" command (kiko/ko)
+    build_parser = subparsers.add_parser("kiko", help="Build a standalone Python script (alias: build, ko)")
+    build_parser.add_argument("file", help="Path to the .odu file")
+    build_parser.add_argument("-o", "--output", help="Output file path")
+    
+    build_parser_ko = subparsers.add_parser("ko", help="Build a standalone Python script")
+    build_parser_ko.add_argument("file", help="Path to the .odu file")
+    build_parser_ko.add_argument("-o", "--output", help="Output file path")
+
+    build_parser_en = subparsers.add_parser("build", help="Build a standalone Python script")
+    build_parser_en.add_argument("file", help="Path to the .odu file")
+    build_parser_en.add_argument("-o", "--output", help="Output file path")
+
     # If no arguments are provided, default to REPL
     if len(sys.argv) == 1:
         from oduduwa.repl import start_repl
@@ -96,8 +109,65 @@ def main():
     elif args.command in ["yewo", "lint"]:
         from oduduwa.core.linter import lint_file
         lint_file(args.file)
+    elif args.command in ["kiko", "ko", "build"]:
+        build_standalone(args.file, args.output)
     else:
         parser.print_help()
+
+def build_standalone(filepath, output_path=None):
+    if not os.path.exists(filepath):
+        print(f"Aṣiṣe (Error): Kò rí fáyìlì '{filepath}' (File not found).")
+        sys.exit(1)
+        
+    if output_path is None:
+        output_path = filepath.rsplit('.', 1)[0] + ".py"
+        
+    with open(filepath, 'r', encoding='utf-8') as f:
+        code = f.read()
+        
+    try:
+        lexer = OduduwaLexer(code)
+        tokens = lexer.tokenize()
+        parser = OduduwaParser(tokens)
+        ast = parser.parse()
+        transpiler = OduduwaTranspiler()
+        python_code = transpiler.transpile(ast)
+        
+        # Simple bundling: Add stdlib contents to the top if used
+        bundled_code = "#!/usr/bin/env python3\n# Built with OduduwaLang\n\n"
+        
+        # Check for imports in the code to include relevant stdlib
+        included_modules = []
+        for mod in transpiler.STDLIB:
+            if f"import {mod}" in python_code or f"from {mod}" in python_code:
+                included_modules.append(mod)
+        
+        if included_modules:
+            bundled_code += "import sys, types\n"
+            bundled_code += "oduduwa_stdlib = {}\n"
+            for mod in included_modules:
+                mod_path = os.path.join(os.path.dirname(__file__), "stdlib", f"{mod}.py")
+                if os.path.exists(mod_path):
+                    with open(mod_path, 'r', encoding='utf-8') as mf:
+                        m_content = mf.read()
+                    bundled_code += f"\n# --- stdlib: {mod} ---\n"
+                    bundled_code += f"mod_{mod} = types.ModuleType('{mod}')\n"
+                    # Simple way to exec and populate module
+                    bundled_code += f"exec({repr(m_content)}, mod_{mod}.__dict__)\n"
+                    bundled_code += f"sys.modules['oduduwa.stdlib.{mod}'] = mod_{mod}\n"
+            
+            bundled_code += "\n# --- End of stdlib ---\n\n"
+        
+        bundled_code += python_code
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            f.write(bundled_code)
+            
+        print(f"Iṣẹ́ parí (Success): A ti kọ fáyìlì sí '{output_path}'")
+        
+    except Exception as e:
+        print(f"Failure during build: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

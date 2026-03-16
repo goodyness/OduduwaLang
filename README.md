@@ -66,7 +66,7 @@ python -m oduduwa.cli
 You will see the interactive prompt where you can type code line-by-line:
 ```
 =======================================
- OduduwaLang REPL v0.1.0
+ OduduwaLang REPL v0.2.0
  Tẹ 'iranlowo' (tabi 'help') fun itọsọna.
  Tẹ 'jade()' lati kuro (Type 'jade()' to exit)
 =======================================
@@ -80,13 +80,18 @@ Bawo ni?
 
 OduduwaLang supports variables, conditionals, loops, nested dictionaries, lists, object-oriented programming, and standard library modules!
 
-### Variables & Conditionals
+### User Input, Variables & Conditionals
 ```oduduwa
+oruko = gba_wole("Kini oruko re? ")
+tejade(f"E kaabo, {oruko}!")
+
 odun = 20
-ti odun > 18:
-    tejade("O to lati se idibo!")
+ti odun < 13:
+    tejade("O je omode.")
+tabi odun < 20:
+    tejade("O je odo.")
 bibeeko:
-    tejade("O ti kere ju.")
+    tejade("O je agbalagba.")
 ```
 
 ### OOP (Classes) & Functions
@@ -114,11 +119,13 @@ ni_ipari:
 
 ### Imports & Standard Library
 ```oduduwa
-mu_wole onka
+mu_wole isiro
 mu_wole akoko
+mu_wole onka
 
-tejade("100 l'ede Yoruba ni:", onka.yipada(100))
+tejade("Apapo [1, 2, 3] je:", isiro.apapo([1, 2, 3]))
 tejade("Asiko yii ni:", akoko.asiko_kika())
+tejade("100 l'ede Yoruba ni:", onka.yipada(100))
 ```
 
 ---
@@ -127,8 +134,9 @@ tejade("Asiko yii ni:", akoko.asiko_kika())
 OduduwaLang comes with built-in development tools to keep your code clean:
 * **Format**: `oduduwa se_eto app.odu` (Perfectly indents your code)
 * **Lint**: `oduduwa yewo app.odu` (Scans for syntax errors)
-* **Run**: `oduduwa sise app.odu`
-* **REPL**: `oduduwa soro`
+* **Build**: `oduduwa kiko app.odu -o app.py` (Creates a standalone Python script)
+* **Run**: `oduduwa sise app.odu` (Executes your script)
+* **REPL**: `oduduwa soro` (Enters the interactive shell)
 
 ## 📄 Documentation
 For the full technical details on how to write OduduwaLang, view our guides:

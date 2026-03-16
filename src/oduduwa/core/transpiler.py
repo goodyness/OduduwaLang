@@ -4,7 +4,7 @@ class OduduwaTranspiler:
     def __init__(self):
         self.indent_level = 0
         self.output = []
-        self.STDLIB = ["iro", "akoko", "iwe", "ayelujara", "json_yoruba", "onka"]
+        self.STDLIB = ["iro", "akoko", "iwe", "ayelujara", "json_yoruba", "onka", "isiro"]
 
     def emit(self, text):
         self.output.append("    " * self.indent_level + text)
@@ -99,6 +99,18 @@ class OduduwaTranspiler:
                 for stmt in node.body:
                     self.visit_stmt(stmt)
             self.indent_level -= 1
+            
+            for e_cond, e_body in node.elifs:
+                ec = self.visit_expr(e_cond)
+                self.emit(f"elif {ec}:")
+                self.indent_level += 1
+                if not e_body:
+                    self.emit("pass")
+                else:
+                    for stmt in e_body:
+                        self.visit_stmt(stmt)
+                self.indent_level -= 1
+
             if node.orelse:
                 self.emit("else:")
                 self.indent_level += 1
@@ -155,6 +167,8 @@ class OduduwaTranspiler:
             return node.id
         elif isinstance(node, String):
             return repr(node.s)
+        elif isinstance(node, FString):
+            return "f" + repr(node.s)
         elif isinstance(node, Number):
             return str(node.n)
         elif isinstance(node, Boolean):

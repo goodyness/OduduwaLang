@@ -178,18 +178,31 @@ class OduduwaParser:
         self.expect(TokenType.NEWLINE)
         body = self.block()
         
+        elifs = []
         orelse = []
-        # Skip optional blank lines
-        while self.current().type == TokenType.NEWLINE:
-            self.advance()
-            
+        
+        while True:
+            # Skip optional blank lines
+            while self.current().type == TokenType.NEWLINE:
+                self.advance()
+                
+            if self.current().type == TokenType.SI_TI:
+                self.advance()
+                e_cond = self.expression()
+                self.expect(TokenType.COLON)
+                self.expect(TokenType.NEWLINE)
+                e_body = self.block()
+                elifs.append((e_cond, e_body))
+            else:
+                break
+                
         if self.current().type == TokenType.BIBEEKO:
             self.expect(TokenType.BIBEEKO)
             self.expect(TokenType.COLON)
             self.expect(TokenType.NEWLINE)
             orelse = self.block()
             
-        return If(condition, body, orelse)
+        return If(condition, body, elifs, orelse)
 
     def assignment(self):
         target = Name(self.expect(TokenType.IDENTIFIER).value)
@@ -243,6 +256,8 @@ class OduduwaParser:
             node = Number(tok.value)
         elif tok.type == TokenType.STRING:
             node = String(tok.value[1:-1]) # Strip quotes
+        elif tok.type == TokenType.FSTRING:
+            node = FString(tok.value[2:-1]) # Strip f"
         elif tok.type == TokenType.SOTITO:
             node = Boolean(True)
         elif tok.type == TokenType.SEKE:
@@ -258,6 +273,15 @@ class OduduwaParser:
                     args.append(self.expression())
             self.expect(TokenType.RPAREN)
             node = Call(Name("print"), args)
+        elif tok.type == TokenType.IDENTIFIER and tok.value == "gba_wole":
+            self.expect(TokenType.LPAREN)
+            args = []
+            if self.current().type != TokenType.RPAREN:
+                args.append(self.expression())
+                while self.match(TokenType.COMMA):
+                    args.append(self.expression())
+            self.expect(TokenType.RPAREN)
+            node = Call(Name("input"), args)
         elif tok.type == TokenType.IDENTIFIER:
             node = Name(tok.value)
         elif tok.type == TokenType.LPAREN:

@@ -1,0 +1,23 @@
+tejade("--- Itan Idanwo (Conditionals & Input) ---")
+
+oruko = gba_wole("Kini oruko re? ")
+tejade(f"E kaabo, {oruko}!")
+
+ojo_ori_str = gba_wole("Omo odun melo ni e? ")
+# In Oduduwa currently we don't have int() cast explicitly yet 
+# but Python's input returns string. 
+# For now, we'll assume the user enters something we can compare if transpiled.
+# Wait, if comparison happens in Python, it might fail string vs int.
+# Let's use a simpler check for now or just demonstrate the logic.
+
+tejade("--- Ipele Idanwo ---")
+ojo_ori = 20 # Static for now to show logic
+
+ti ojo_ori < 13:
+    tejade("O jẹ ọmọdé (You are a child).")
+tabi ojo_ori < 20:
+    tejade("O jẹ ọdọ (You are a teenager).")
+tabi ojo_ori < 60:
+    tejade("O jẹ àgbàlagbà (You are an adult).")
+bibeeko:
+    tejade("O ti gbó (You are elderly).")

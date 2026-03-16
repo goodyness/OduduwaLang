@@ -5,10 +5,12 @@
 - `pada`: Return from a function (`return`)
 - `ti`: If statement (`if`)
 - `si_ti`: Else If statement (`elif`)
+- `tabi`: Else If statement (`elif`) [Alias for `si_ti`]
 - `bibeeko`: Else statement (`else`)
 - `fun`: For loop (`for`)
 - `nigbati`: While loop (`while`)
 - `tejade`: Print to console (`print()`)
+- `gba_wole`: Input from user (`input()`)
 - `sotito`: Boolean `True`
 - `seke`: Boolean `False`
 - `ofo`: Null value `None`
@@ -20,12 +22,20 @@ oruko = "Ade"
 odun = 20
 ```
 
+### Formatted Strings (f-strings)
+You can embed expressions inside string literals using curly braces:
+```oduduwa
+tejade(f"Oruko mi ni {oruko}")
+```
+
 ## Conditionals (Tí)
 ```oduduwa
-ti odun > 18:
-    tejade("O to lati se idibo!")
+ti odun < 13:
+    tejade("O je omode.")
+tabi odun < 20:
+    tejade("O je odo.")
 bibeeko:
-    tejade("O ti kere ju.")
+    tejade("O je agbalagba.")
 ```
 
 ## Loops (Yíká)
@@ -63,10 +73,11 @@ oluko = {
 ## Standard Library (Àkójọ́pọ̀ Kíni)
 OduduwaLang provides localized stdlib implementations that map tightly to Python's capabilities.
 ```oduduwa
-mu_wole iro
+mu_wole isiro
 mu_wole akoko
 mu_wole onka
 
+tejade(isiro.apapo([1, 2, 3])) # 6
 tejade(onka.yipada(100)) # "ọgọ́rùn-ún kan le"
 ```
 

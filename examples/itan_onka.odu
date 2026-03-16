@@ -1,0 +1,25 @@
+mu_wole isiro
+
+# Ẹ̀kọ́ isiro pipe (Comprehensive Math Lesson)
+tejade("--- Ẹ̀kọ́ isiro (Math) ---")
+
+awon_nomba = [10, 25, 5, 40, 15]
+tejade(f"Awon nomba wa ni: {awon_nomba}")
+
+# Apapo (Sum)
+apapo = isiro.apapo(awon_nomba)
+tejade(f"Apapo (Sum): {apapo}")
+
+# Iwon (Average)
+iwon = isiro.iwon(awon_nomba)
+tejade(f"Iwon (Average): {iwon}")
+
+# To bi ju & Kere ju (Max & Min)
+tejade(f"Eyi ti o tobi ju (Max): {isiro.to_bi_ju(awon_nomba)}")
+tejade(f"Eyi ti o kere ju (Min): {isiro.kere_ju(awon_nomba)}")
+
+# Agbara & Gbere Square (Power & Square Root)
+base = 2
+exp = 10
+tejade(f"{base} ni agbara {exp} ni: {isiro.agbara(base, exp)}")
+tejade(f"Gbere square 144 ni: {isiro.gbere_square(144)}")

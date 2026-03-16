@@ -21,9 +21,10 @@ class Return(ASTNode):
         self.value = value
 
 class If(ASTNode):
-    def __init__(self, condition, body, orelse):
+    def __init__(self, condition, body, elifs=None, orelse=None):
         self.condition = condition
         self.body = body # List of statements
+        self.elifs = elifs or [] # List of (condition, body) tuples
         self.orelse = orelse # List of statements
 
 class While(ASTNode):
@@ -94,6 +95,10 @@ class Name(ASTNode):
         self.id = id
 
 class String(ASTNode):
+    def __init__(self, s):
+        self.s = s
+
+class FString(ASTNode):
     def __init__(self, s):
         self.s = s
 
